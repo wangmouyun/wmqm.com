@@ -8,11 +8,13 @@
     <style>
         :root {
             --main-blue: #0052cc;
+            --deep-blue: #0042a5;
             --light-blue: #eef4ff;
             --tech-gray: #666e7a;
             --bg-white: #ffffff;
             --bg-soft: #f8f9fb;
             --text-dark: #1a1a1a;
+            --wechat-green: #28a745;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -37,7 +39,10 @@
             z-index: 1000;
         }
         .logo { font-size: 24px; font-weight: 800; color: var(--main-blue); text-decoration: none; }
-        .nav-phone { font-size: 1rem; font-weight: bold; color: var(--main-blue); text-decoration: none; }
+        .logo span { color: var(--text-dark); }
+        .nav-phones { display: flex; align-items: center; gap: 10px; color: var(--main-blue); }
+        .nav-phone-links { text-align: right; }
+        .nav-phone-links a { font-size: 0.9rem; font-weight: bold; color: var(--main-blue); text-decoration: none; display: block; line-height: 1.3; }
 
         /* --- 英雄区 --- */
         .hero {
@@ -60,16 +65,22 @@
             font-weight: 600;
             margin-bottom: 20px;
         }
+        .cta-group { display: flex; gap: 15px; flex-wrap: wrap; }
         .cta-btn {
             background: var(--main-blue);
             color: white;
-            padding: 16px 35px;
+            padding: 14px 25px;
             text-decoration: none;
             border-radius: 8px;
             font-weight: bold;
-            display: inline-block;
             transition: 0.3s;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
+        .cta-btn.alt { background: var(--deep-blue); }
+        .cta-btn:hover { opacity: 0.9; transform: translateY(-2px); }
 
         /* --- 产品区块 --- */
         .container { padding: 80px 10%; }
@@ -109,47 +120,123 @@
         .product-card ul li { margin-bottom: 8px; color: var(--tech-gray); font-size: 0.95rem; }
         .product-card ul li i { color: var(--main-blue); margin-right: 8px; }
 
-        /* --- 高亮区 --- */
+        /* --- 高亮横幅 --- */
         .highlight-banner {
             background: var(--main-blue);
             color: white;
-            padding: 50px;
+            padding: 40px 50px;
             border-radius: 15px;
             margin-bottom: 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 25px;
+            gap: 30px;
         }
-        .highlight-banner h2 { font-size: 2.2rem; margin: 10px 0; }
+        .highlight-banner h2 { font-size: 2rem; margin: 8px 0; }
+        .banner-phones { font-size: 1.5rem; font-weight: 800; line-height: 1.4; text-align: right; }
+        .banner-label { font-size: 0.9rem; font-weight: normal; opacity: 0.85; margin-bottom: 5px; display: block; }
 
-        /* --- 联系区 --- */
+        /* --- 联系区 (大间距呼吸感重构) --- */
         .contact-section {
-            background: #f1f4f9;
-            padding: 70px 10%;
+            background: linear-gradient(to bottom, #f8f9fb, #f1f4f9);
+            padding: 80px 10% 60px;
             text-align: center;
-            border-radius: 0 60px 0 60px;
+            border-radius: 0 80px 0 80px;
         }
-        .address-info { font-size: 1.2rem; color: var(--tech-gray); margin-bottom: 25px; }
-        .manager-card {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: white;
-            padding: 15px 40px;
-            border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        .person-info { margin-bottom: 40px; }
+        .manager-name {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            display: block;
+            margin-bottom: 8px;
+        }
+        .manager-title {
+            color: var(--main-blue);
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: block;
             margin-bottom: 20px;
         }
-        .phone-display { 
-            font-size: 4rem; 
-            font-weight: 800; 
-            color: var(--main-blue); 
+        .wechat-hint {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #e7f9ed;
+            color: var(--wechat-green);
+            padding: 8px 22px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: bold;
+        }
+        .contact-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px; /* 大间距 */
+            flex-wrap: wrap;
+            margin: 50px 0;
+        }
+        .phone-card {
+            background: white;
+            padding: 30px 45px;
+            border-radius: 20px;
             text-decoration: none;
-            display: block;
-            margin-bottom: 15px;
-            line-height: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            min-width: 300px;
+        }
+        .phone-card:hover {
+            border-color: var(--main-blue);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 82, 204, 0.12);
+        }
+        .phone-card i {
+            font-size: 1.6rem;
+            color: white;
+            background: var(--main-blue);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        .phone-num {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--main-blue);
+            letter-spacing: -1px;
+        }
+        .tap-to-call {
+            font-size: 0.85rem;
+            color: var(--tech-gray);
+            letter-spacing: 1px;
+        }
+        .address-info { font-size: 1.15rem; color: var(--tech-gray); margin-top: 30px; }
+        
+        .service-promise {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 60px;
+            border-top: 1px solid #dee2e6;
+            padding-top: 50px;
+        }
+        .promise-item {
+            font-size: 1rem;
+            color: var(--tech-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
         }
 
         footer { padding: 40px 10%; text-align: center; color: var(--tech-gray); border-top: 1px solid #eee; }
@@ -159,22 +246,16 @@
             nav { padding: 12px 5%; }
             .hero { padding: 40px 5%; flex-direction: column; text-align: center; gap: 30px; }
             .hero-text h1 { font-size: 2.2rem; }
-            .hero-text p { font-size: 1rem; }
-            .hero i.fa-truck-moving { font-size: 120px !important; }
-            
+            .cta-group { justify-content: center; gap: 10px; }
+            .cta-btn { width: 100%; justify-content: center; }
             .container { padding: 40px 5%; }
-            .section-title { font-size: 1.8rem; margin-bottom: 30px; }
-            
+            .section-title { font-size: 1.8rem; }
             .highlight-banner { padding: 30px 20px; text-align: center; }
-            .highlight-banner div { text-align: center !important; width: 100%; }
-            .highlight-banner h2 { font-size: 1.6rem; }
-
-            .product-card { padding: 25px 20px; }
-            
-            .contact-section { padding: 50px 5%; border-radius: 0 40px 0 40px; }
-            .address-info { font-size: 1rem; margin-bottom: 20px; }
-            .manager-card { padding: 10px 25px; margin-bottom: 15px; }
-            .phone-display { font-size: 2.5rem; margin-bottom: 10px; }
+            .highlight-banner div { width: 100%; text-align: center !important; }
+            .banner-phones { text-align: center; margin-top: 10px; font-size: 1.3rem; }
+            .phone-card { min-width: 100%; padding: 25px; }
+            .phone-num { font-size: 1.7rem; }
+            .contact-section { padding: 50px 5%; }
         }
     </style>
 </head>
@@ -182,18 +263,27 @@
 
     <nav>
         <a href="/" class="logo">网谋<span>汽贸</span></a>
-        <a href="tel:15551555378" class="nav-phone"><i class="fas fa-phone-alt"></i> 155-5155-5378</a>
+        <div class="nav-phones">
+            <i class="fas fa-phone-alt"></i>
+            <div class="nav-phone-links">
+                <a href="tel:15551555378">155-5155-5378</a>
+                <a href="tel:15900833031">159-0083-3031</a>
+            </div>
+        </div>
     </nav>
 
     <section class="hero">
         <div class="hero-text">
-            <span class="hero-badge"><i class="fas fa-bolt"></i> 智能电动系统 · 现货供应</span>
-            <h1>12.5米-18米<br>电动双飞翼厢体</h1>
-            <p>专业提供大尺寸电动双飞翼集装箱租售方案。整合高强度轻量化工艺与智能电动液压技术，适配长途干线及特种运输需求。</p>
-            <a href="tel:15551555378" class="cta-btn">获取报价</a>
+            <span class="hero-badge"><i class="fas fa-map-marker-alt"></i> 上海市浦东新区物流大道188号</span>
+            <h1>飞翼门集装箱<br>租售与定制专家</h1>
+            <p>主营全系列飞翼门集装箱，涵盖12.5米-18米电动双飞翼及各型规格。提供灵活的租售方案及专业定制服务。</p>
+            <div class="cta-group">
+                <a href="tel:15551555378" class="cta-btn"><i class="fas fa-phone-alt"></i> 155 5155 5378</a>
+                <a href="tel:15900833031" class="cta-btn alt"><i class="fas fa-phone-alt"></i> 159 0083 3031</a>
+            </div>
         </div>
         <div style="flex:1; text-align:center;">
-            <i class="fas fa-truck-moving" style="font-size: 180px; color: #d0deee;"></i>
+            <i class="fas fa-truck-moving" style="font-size: 160px; color: #d0deee;"></i>
         </div>
     </section>
 
@@ -202,13 +292,14 @@
         
         <div class="highlight-banner">
             <div>
-                <span style="text-transform: uppercase; font-weight: bold; letter-spacing: 1px; font-size: 0.9rem;">特种运输旗舰</span>
+                <span style="text-transform: uppercase; font-weight: bold; letter-spacing: 1px; font-size: 0.85rem;">FLAGSHIP SERIES</span>
                 <h2>12.5米 - 18米 电动双飞翼</h2>
-                <p>专为超长货物及高频装卸设计，电动双侧同步开启，大幅提升物流效率。</p>
+                <p>专为超长货物及高频装卸设计，电动双侧同步开启。</p>
             </div>
-            <div style="text-align: right;">
-                <span style="font-size: 1rem; opacity: 0.9;">详细定制方案请联系</span><br>
-                <span style="font-size: 1.8rem; font-weight: 900;">155 5155 5378</span>
+            <div class="banner-phones">
+                <span class="banner-label">业务详询：</span>
+                155 5155 5378<br>
+                159 0083 3031
             </div>
         </div>
 
@@ -220,8 +311,8 @@
                 <ul>
                     <li><i class="fas fa-check-circle"></i> 高强度轻量化板材，提升有效载重</li>
                     <li><i class="fas fa-check-circle"></i> 智能电动控电系统，操作安全便捷</li>
-                    <li><i class="fas fa-check-circle"></i> 强化密封结构，确保全天候防雨性能</li>
-                    <li style="margin-top:12px; color:var(--main-blue); font-weight:bold;">* 更多具体规格请电询</li>
+                    <li><i class="fas fa-check-circle"></i> 强化密封结构，确保良好防雨性能</li>
+                    <li style="margin-top:10px; color:var(--main-blue); font-weight:bold;">* 更多规格请电询获取</li>
                 </ul>
             </div>
 
@@ -232,42 +323,62 @@
                 <ul>
                     <li><i class="fas fa-check-circle"></i> 选配高性能动力单元，启闭稳定顺畅</li>
                     <li><i class="fas fa-check-circle"></i> 适配快递/零部件/家电等多种场景</li>
-                    <li><i class="fas fa-check-circle"></i> 可根据实际底盘尺寸进行个性化定制</li>
-                    <li style="margin-top:12px; color:var(--main-blue); font-weight:bold;">* 详细配置方案请电询</li>
+                    <li><i class="fas fa-check-circle"></i> 支持根据底盘尺寸进行个性化定制</li>
+                    <li style="margin-top:10px; color:var(--main-blue); font-weight:bold;">* 详细方案请电询获取</li>
                 </ul>
             </div>
 
             <div class="product-card">
                 <span class="size-tag">综合服务</span>
                 <h3>租售方案与运维</h3>
-                <p>立足上海浦东，提供涵盖租、售、维保的全方位支持。</p>
+                <p>驻点临近浦东机场物流区，提供全方位技术保障。</p>
                 <ul>
                     <li><i class="fas fa-check-circle"></i> 核心电动液压系统快速响应维修</li>
-                    <li><i class="fas fa-check-circle"></i> 支持短期应急租赁与长期商务合约</li>
-                    <li><i class="fas fa-check-circle"></i> 原厂配件充足，一站式解决后顾之忧</li>
-                    <li style="margin-top:12px; color:var(--main-blue); font-weight:bold;">* 商务细节请联系面谈</li>
+                    <li><i class="fas fa-check-circle"></i> 提供短期租赁与长期商务合约方案</li>
+                    <li><i class="fas fa-check-circle"></i> 支持旧箱升级、加装及系统改造服务</li>
+                    <li style="margin-top:10px; color:var(--main-blue); font-weight:bold;">* 商务细节请联系面谈</li>
                 </ul>
             </div>
         </div>
     </div>
 
     <section class="contact-section">
-        <div class="address-info">
-            <i class="fas fa-building"></i> 地址：上海市浦东新区物流大道188号
-        </div>
-        
-        <div class="manager-card">
-            <i class="fas fa-user-circle" style="font-size: 1.8rem; color: var(--main-blue);"></i>
-            <span style="font-size: 1.2rem; font-weight: bold;">王先生</span>
+        <div class="person-info">
+            <span class="manager-title">专业商务洽谈 · 方案定制</span>
+            <span class="manager-name">王先生</span>
+            <div class="wechat-hint">
+                <i class="fab fa-weixin"></i> 手机号即微信号，欢迎添加
+            </div>
         </div>
 
-        <a href="tel:15551555378" class="phone-display">155 5155 5378</a>
-        <p style="color:var(--tech-gray); font-size: 0.9rem;">欢迎实地考察电动系统，全国范围可安排交付</p>
+        <div class="contact-grid">
+            <a href="tel:15551555378" class="phone-card">
+                <i class="fas fa-phone-alt"></i>
+                <span class="phone-num">155 5155 5378</span>
+                <span class="tap-to-call">点击拨号 · 快速响应</span>
+            </a>
+            <a href="tel:15900833031" class="phone-card">
+                <i class="fas fa-mobile-alt"></i>
+                <span class="phone-num">159 0083 3031</span>
+                <span class="tap-to-call">点击拨号 · 商务洽谈</span>
+            </a>
+        </div>
+
+        <div class="address-info">
+            <i class="fas fa-map-marker-alt" style="color: var(--main-blue);"></i> 
+            <strong>现货仓库：</strong>上海市浦东新区物流大道188号
+        </div>
+
+        <div class="service-promise">
+            <div class="promise-item"><i class="fas fa-check-circle" style="color:var(--main-blue)"></i> 品质保证</div>
+            <div class="promise-item"><i class="fas fa-truck" style="color:var(--main-blue)"></i> 全国送货上门</div>
+            <div class="promise-item"><i class="fas fa-tools" style="color:var(--main-blue)"></i> 专业售后支持</div>
+        </div>
     </section>
 
     <footer>
         <p>&copy; <span id="year"></span> 网谋汽贸 版权所有</p>
-        <p style="margin-top: 8px; font-size: 0.8rem;">电动双飞翼集装箱租售·定制专业服务商</p>
+        <p style="margin-top: 8px; font-size: 0.8rem;">集装箱租售·定制专业服务商</p>
     </footer>
 
     <script>
