@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>网谋汽贸 | 集装箱专业租售</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --main-blue: #0052cc;
+            --light-blue: #eef4ff;
+            --tech-gray: #666e7a;
+            --bg-white: #ffffff;
+            --bg-soft: #f8f9fb;
+            --text-dark: #1a1a1a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: "Segoe UI", "PingFang SC", "Helvetica Neue", sans-serif; 
+            background-color: var(--bg-white); 
+            color: var(--text-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- 导航 --- */
+        nav {
+            background: white;
+            padding: 15px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo { font-size: 24px; font-weight: 800; color: var(--main-blue); text-decoration: none; }
+        .nav-phone { font-size: 1rem; font-weight: bold; color: var(--main-blue); text-decoration: none; }
+
+        /* --- 英雄区 --- */
+        .hero {
+            background: linear-gradient(120deg, var(--light-blue) 0%, #ffffff 100%);
+            padding: 80px 10%;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        .hero-text { flex: 1; }
+        .hero-text h1 { font-size: 3.2rem; color: var(--main-blue); line-height: 1.2; margin-bottom: 20px; }
+        .hero-text p { font-size: 1.1rem; color: var(--tech-gray); margin-bottom: 30px; }
+        .hero-badge {
+            display: inline-block;
+            background: var(--main-blue);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .cta-btn {
+            background: var(--main-blue);
+            color: white;
+            padding: 16px 35px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        /* --- 产品区块 --- */
+        .container { padding: 80px 10%; }
+        .section-title { font-size: 2.2rem; margin-bottom: 40px; text-align: center; }
+        .section-title span { color: var(--main-blue); }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .product-card {
+            background: var(--bg-soft);
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 35px;
+            transition: 0.3s;
+        }
+        .product-card:hover { 
+            background: white; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+            border-color: var(--main-blue);
+        }
+        .product-card h3 { font-size: 1.6rem; margin-bottom: 12px; color: var(--main-blue); }
+        .size-tag { 
+            background: #fff; 
+            border: 1px solid var(--main-blue); 
+            color: var(--main-blue);
+            padding: 3px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .product-card ul { list-style: none; margin-top: 15px; }
+        .product-card ul li { margin-bottom: 8px; color: var(--tech-gray); font-size: 0.95rem; }
+        .product-card ul li i { color: var(--main-blue); margin-right: 8px; }
+
+        /* --- 15米特型箱高亮区 --- */
+        .highlight-banner {
+            background: var(--main-blue);
+            color: white;
+            padding: 50px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+        .highlight-banner h2 { font-size: 2.2rem; margin: 10px 0; }
+
+        /* --- 联系区 --- */
+        .contact-section {
+            background: #f1f4f9;
+            padding: 70px 10%;
+            text-align: center;
+            border-radius: 0 60px 0 60px;
+        }
+        .address-info { font-size: 1.2rem; color: var(--tech-gray); margin-bottom: 25px; }
+        .manager-card {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            margin-bottom: 20px; /* 控制名片与下方电话的间距 */
+        }
+        .phone-display { 
+            font-size: 4rem; 
+            font-weight: 800; 
+            color: var(--main-blue); 
+            text-decoration: none;
+            display: block;
+            margin-bottom: 15px;
+            line-height: 1;
+        }
+
+        footer { padding: 40px 10%; text-align: center; color: var(--tech-gray); border-top: 1px solid #eee; }
+
+        /* --- 移动端优化 --- */
+        @media (max-width: 768px) {
+            nav { padding: 12px 5%; }
+            .hero { padding: 40px 5%; flex-direction: column; text-align: center; gap: 30px; }
+            .hero-text h1 { font-size: 2.2rem; }
+            .hero-text p { font-size: 1rem; }
+            .hero i.fa-truck-moving { font-size: 120px !important; }
+            
+            .container { padding: 40px 5%; }
+            .section-title { font-size: 1.8rem; margin-bottom: 30px; }
+            
+            .highlight-banner { padding: 30px 20px; text-align: center; }
+            .highlight-banner div { text-align: center !important; width: 100%; }
+            .highlight-banner h2 { font-size: 1.6rem; }
+
+            .product-card { padding: 25px 20px; }
+            
+            .contact-section { padding: 50px 5%; border-radius: 0 40px 0 40px; }
+            .address-info { font-size: 1rem; margin-bottom: 20px; }
+            .manager-card { padding: 10px 25px; margin-bottom: 15px; }
+            .phone-display { font-size: 2.5rem; margin-bottom: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="logo">网谋<span>汽贸</span></a>
+        <a href="tel:15551555378" class="nav-phone"><i class="fas fa-phone-alt"></i> 155-5155-5378</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-text">
+            <span class="hero-badge"><i class="fas fa-map-marker-alt"></i> 上海市浦东新区物流大道188号</span>
+            <h1>飞翼门集装箱<br>租售与定制专家</h1>
+            <p>主营全系列飞翼门集装箱，涵盖15.2米至4.2米各型规格。提供灵活的租售方案及专业定制服务，上海浦东现货供应。</p>
+            <a href="tel:15551555378" class="cta-btn">咨询热线</a>
+        </div>
+        <div style="flex:1; text-align:center;">
+            <i class="fas fa-truck-moving" style="font-size: 180px; color: #d0deee;"></i>
+        </div>
+    </section>
+
+    <div class="container">
+        <h2 class="section-title">核心<span>箱体</span>规格</h2>
+        
+        <div class="highlight-banner">
+            <div>
+                <span style="text-transform: uppercase; font-weight: bold; letter-spacing: 1px; font-size: 0.9rem;">主力旗舰车型</span>
+                <h2>15.2米 特种飞翼半挂箱</h2>
+                <p>专为大型电子精密仪器、零部件托盘化运输设计，空间利用率极高。</p>
+            </div>
+            <div style="text-align: right;">
+                <span style="font-size: 1rem; opacity: 0.9;">详细参数请联系</span><br>
+                <span style="font-size: 1.8rem; font-weight: 900;">155 5155 5378</span>
+            </div>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <span class="size-tag">9.6米</span>
+                <h3>干线物流飞翼厢</h3>
+                <p>适配三轴标准底盘，兼顾长途运输稳定性与装卸灵活性。</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> 选用优质钢材，箱体稳固耐用</li>
+                    <li><i class="fas fa-check-circle"></i> 匹配高效动力单元，系统运行平稳</li>
+                    <li><i class="fas fa-check-circle"></i> 严格密封工艺，具备良好防雨性能</li>
+                    <li style="margin-top:12px; color:var(--main-blue); font-weight:bold;">* 更多具体参数请电询获取</li>
+                </ul>
+            </div>
+
+            <div class="product-card">
+                <span class="size-tag">6.8米 / 4.2米</span>
+                <h3>城市快运翼展厢</h3>
+                <p>针对合规化及轻量化需求设计，显著提升城配运输效率。</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> 轻量化材料方案，降低运行自重</li>
+                    <li><i class="fas fa-check-circle"></i> 动力转换效率高，系统操作简便</li>
+                    <li><i class="fas fa-check-circle"></i> 支持不同规格尺寸及特殊功能定制</li>
+                    <li style="margin-top:12px; color:var(--main-blue); font-weight:bold;">* 详细方案及配置请电询</li>
+                </ul>
+            </div>
+
+            <div class="product-card">
+                <span class="size-tag">综合服务</span>
+                <h3>租售方案与运维支持</h3>
+                <p>驻点浦东机场物流区，提供全方位生命周期技术保障。</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> 核心液压及控电系统快速上门检修</li>
+                    <li><i class="fas fa-check-circle"></i> 提供短期租赁、长期合约及金融方案</li>
+                    <li><i class="fas fa-check-circle"></i> 支持旧箱升级、加装及系统改造服务</li>
+                    <li style="margin-top:12px; color:var(--main-blue); font-weight:bold;">* 商务细节请联系面谈</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <section class="contact-section">
+        <div class="address-info">
+            <i class="fas fa-building"></i> 地址：上海市浦东新区物流大道188号
+        </div>
+        
+        <div class="manager-card">
+            <i class="fas fa-user-circle" style="font-size: 1.8rem; color: var(--main-blue);"></i>
+            <span style="font-size: 1.2rem; font-weight: bold;">王先生</span>
+        </div>
+
+        <a href="tel:15551555378" class="phone-display">155 5155 5378</a>
+        <p style="color:var(--tech-gray); font-size: 0.9rem;">欢迎实地看箱，全国范围可安排车辆交付</p>
+    </section>
+
+    <footer>
+        <p>&copy; <span id="year"></span> 网谋汽贸 版权所有</p>
+        <p style="margin-top: 8px; font-size: 0.8rem;">专业飞翼门集装箱租赁·销售·定制一站式服务商</p>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
