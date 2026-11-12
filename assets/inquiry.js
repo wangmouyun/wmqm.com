@@ -1,4 +1,4 @@
-/* 字段与请求协议遵循所附官网 assets/inquiry.js。 */
+/* 字段与请求协议遵循所附官网 https://wmqm.wmou.com/assets/inquiry.js。 */
 (() => {
   'use strict';
   const form = document.querySelector('#inquiry');

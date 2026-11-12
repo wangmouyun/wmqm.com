@@ -79,7 +79,7 @@
   const qr = $('.qr-dialog');
   $$('[data-open-qr]').forEach(button => button.addEventListener('click', () => {
     if (qr?.showModal) qr.showModal();
-    else window.open('assets/wechat.jpg', '_blank', 'noopener');
+    else window.open('https://wmqm.wmou.com/assets/wechat.jpg', '_blank', 'noopener');
   }));
   $('.dialog-close', qr || document)?.addEventListener('click', () => qr.close());
   qr?.addEventListener('click', event => {
